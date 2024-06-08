@@ -1,7 +1,7 @@
 # Tux
 
 [Official Site](https://tuxlib.dev/)
-– [Docs](https://hexdocs.pm/tux/readme.html)
+– [Docs](https://hexdocs.pm/tux)
 – [Examples](https://github.com/threatfender/tux/tree/master/examples)
 
 <img src="assets/logo.png"/>
