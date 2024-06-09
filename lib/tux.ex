@@ -31,7 +31,7 @@ defmodule Tux do
 
   ```
   # mix.exs
-  {:tux, "~> 0.3.0"}
+  {:tux, "~> 0.4.0"}
 
   # .formatter.exs
   import_deps: [:tux]
