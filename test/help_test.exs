@@ -6,6 +6,7 @@ defmodule Tux.HelpTest do
 
   test "empty help" do
     help = Help.new()
+    assert %Help{} = help
     assert to_string(help) == ""
   end
 

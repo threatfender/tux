@@ -7,7 +7,7 @@ defmodule Tux.AlertTest do
 
   describe "alert" do
     test "struct" do
-      %Alert{}
+      assert %Alert{} = %Alert{}
     end
 
     test "with title and message" do

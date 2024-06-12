@@ -215,7 +215,7 @@ defmodule Tux.Dispatcher do
           exitwith: :halt | :quit
         }
 
-  defstruct [:rescue, :device, :newlines, :colors, :preloads, :exitwith]
+  defstruct ~w(rescue device newlines colors preloads exitwith)a
 
   @doc """
   Return a new dispatcher struct, and override its default values

@@ -11,6 +11,7 @@ defmodule Tux.ErrorTest do
       details: "some details"
     }
 
+    assert %Tux.Error{} = error
     assert error.exitcode == 1
   end
 

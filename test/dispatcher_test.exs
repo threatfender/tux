@@ -6,7 +6,7 @@ defmodule Tux.DispatcherTest do
   alias Tux.Help
 
   test "dispatcher struct" do
-    assert %Tux.Dispatcher{}
+    assert %Tux.Dispatcher{} = %Tux.Dispatcher{}
   end
 
   import ExUnit.CaptureLog
