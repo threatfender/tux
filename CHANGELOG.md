@@ -1,5 +1,11 @@
 # Tux Changelog
 
+## v0.X.Y - Current
+
+This version is not yet published to `hex.pm`.
+
+  * Add test for raising `Tux.Error` exceptions
+
 ## v0.4.0 – June 2024
 
   * Include dispatcher preloads in the final command preloads.

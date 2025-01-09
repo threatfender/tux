@@ -15,6 +15,14 @@ defmodule Tux.ErrorTest do
     assert error.exitcode == 1
   end
 
+  test "tux error as exception" do
+    assert_raise(
+      Tux.Error,
+      "some msg",
+      fn -> raise Tux.Error, message: "some msg" end
+    )
+  end
+
   test "tux command errors" do
     assert Errors.CommandRescuedError.new()
     assert Errors.CommandRescuedError.new(env: %Tux.Env{})
