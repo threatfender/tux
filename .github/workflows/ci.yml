@@ -16,8 +16,15 @@ jobs:
 
     strategy:
       matrix:
-        otp: ['25.2', '26.2', '27.2']
-        elixir: ['1.15.2', '1.16.2', '1.17.2', '1.18.2']
+        include:
+        - otp: 25.2
+          elixir: 15.2
+
+        - otp: 26.2
+          elixir: 16.2
+
+        - otp: 27.2
+          elixir: 17.2
 
     steps:
     - name: Checkout
