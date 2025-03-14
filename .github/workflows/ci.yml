@@ -17,9 +17,6 @@ jobs:
     strategy:
       matrix:
         include:
-        - otp: 25.2
-          elixir: 1.15.2
-
         - otp: 26.2
           elixir: 1.16.2
 
@@ -47,4 +44,4 @@ jobs:
       run: mix deps.get --only test
 
     - name: Run tests
-      run: mix test
+      run: mix test --cover
