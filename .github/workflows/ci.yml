@@ -18,13 +18,13 @@ jobs:
       matrix:
         include:
         - otp: 25.2
-          elixir: 15.2
+          elixir: 1.15.2
 
         - otp: 26.2
-          elixir: 16.2
+          elixir: 1.16.2
 
         - otp: 27.2
-          elixir: 17.2
+          elixir: 1.17.2
 
     steps:
     - name: Checkout
