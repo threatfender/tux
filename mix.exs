@@ -46,6 +46,7 @@ defmodule Tux.MixProject do
       main: "Tux",
       logo: "assets/logo.png",
       source_url: "https://github.com/threatfender/tux",
+      source_ref: "master",
       extras: ["CHANGELOG.md"],
       # extra_section: "GUIDES",
       groups_for_modules: [
