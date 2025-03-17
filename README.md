@@ -1,6 +1,6 @@
 # Tux
 
-[Official Site](https://tuxlib.dev/)
+[Official Site](https://tuxpkg.dev/)
 – [Docs](https://hexdocs.pm/tux)
 – [Examples](https://github.com/threatfender/tux/tree/master/examples)
 
@@ -91,7 +91,7 @@ Hello tuxuser!
 
 ## Next Steps
 
-  * Visit the [official site](https://tuxlib.dev)
+  * Visit the [official site](https://tuxpkg.dev)
   * Read the [docs](https://hexdocs.pm/tux) on HexDocs
   * Look into the [examples](https://github.com/threatfender/tux/tree/master/examples) folder for complete escripts
 

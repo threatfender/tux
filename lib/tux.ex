@@ -2,6 +2,9 @@ defmodule Tux do
   @moduledoc """
   *Terminal User Experience*
 
+  [`tuxpkg.dev ›`](https://tuxpkg.dev/)
+  [`github.com ›`](https://github.com/threatfender/tux/)
+
   Tux is a **modular**, **dependency-free** Elixir library
   designed for the speedy creation of elegant command line interfaces
   which subscribe to the philosophy *"One module per command"*.
