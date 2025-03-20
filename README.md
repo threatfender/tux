@@ -16,6 +16,15 @@ Its modular structure ensures its core functionalities can be overwritten
 and composed to fulfill custom needs, and having no dependencies means it can
 achieve a higher level of security by minimizing trusted parties.
 
+
+## Quickstart
+
+To quickly bootstrap a new tux-based CLI project, use the [tux_new](https://hex.pm/packages/tux_new) generator available on [Hex](https://hex.pm/):
+
+```shell
+$ mix do archive.install hex tux_new + tux.new mycli
+```
+
 ## Installation
 
 Add `tux` to your list of dependencies in `mix.exs` and optionally update

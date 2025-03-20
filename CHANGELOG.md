@@ -4,6 +4,7 @@
 
 This version is not yet published to `hex.pm`.
 
+  * Add new `tux_new` installer
   * Add test for raising `Tux.Error` exceptions
 
 ## v0.4.0 – June 2024

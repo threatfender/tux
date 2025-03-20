@@ -13,6 +13,14 @@ defmodule Tux do
   and composed to fulfill custom needs, and having no dependencies means
   it can achieve a higher level of security by minimizing trusted parties.
 
+  _NOTE_: To bootstrap a new tux-based CLI Elixir project, use the
+  [tux_new](https://hex.pm/packages/tux_new) generator available
+  on [Hex](https://hex.pm):
+
+  ```shell
+  $ mix archive.install hex tux_new + tux.new myapp
+  ```
+
   ## Features
 
   Developing with the tux library involves typically the use of
