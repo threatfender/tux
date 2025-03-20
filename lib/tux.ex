@@ -18,7 +18,7 @@ defmodule Tux do
   on [Hex](https://hex.pm):
 
   ```shell
-  $ mix archive.install hex tux_new + tux.new myapp
+  $ mix do archive.install hex tux_new + tux.new myapp
   ```
 
   ## Features
