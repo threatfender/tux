@@ -77,6 +77,16 @@ defmodule Tux.Error do
   ]
 
   @typedoc """
+  Error type which derives the `Tux.Alertable` protocol.
+  """
+  @type t :: %__MODULE__{
+          __tuxexception__: true,
+          message: String.t(),
+          details: String.t(),
+          exitcode: number()
+        }
+
+  @typedoc """
   Options given to `use Tux.Error`
   """
   @type opts :: [message: String.t(), exitcode: integer()]

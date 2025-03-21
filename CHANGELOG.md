@@ -4,6 +4,7 @@
 
 This version is not yet published to `hex.pm`.
 
+  * Define the `Tux.Error.t()` type
   * Add new `tux_new` installer
   * Add test for raising `Tux.Error` exceptions
 
