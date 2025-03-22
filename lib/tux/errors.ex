@@ -37,7 +37,7 @@ defmodule Tux.Errors do
     Return a new error for the current command.
     """
     def new(env: env) do
-      msg = "The #{bold(env.cmd)} command has filed."
+      msg = "The #{bold(env.cmd)} command has failed."
       info = "Use #{bold("--debug")} to see error stacktrace."
       %__MODULE__{details: "#{msg} #{info}"}
     end
