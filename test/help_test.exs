@@ -2,6 +2,7 @@ defmodule Tux.HelpTest do
   use ExUnit.Case
   alias Tux.Help
   import Tux.Colors
+  import Tux.Help, only: [highlight: 1]
   doctest Tux.Help
 
   test "empty help" do
@@ -10,8 +11,6 @@ defmodule Tux.HelpTest do
     assert to_string(help) == ""
   end
 
-  ###
-
   describe "colored help" do
     def colored do
       """
@@ -19,15 +18,15 @@ defmodule Tux.HelpTest do
         cmd - description
 
       #{bold("USAGE")}
-        #{green("cmd [OPTS] [ARGS]")}
+        #{highlight("cmd [OPTS] [ARGS]")}
 
       #{bold("COMMANDS")}
-        #{green("start")}    Start something
-        #{green("stop")}     Stop something
+        #{highlight("start")}    Start something
+        #{highlight("stop")}     Stop something
 
       #{bold("OPTIONS")}
-        #{green("--flag1 FLAG")}    this flag does something
-        #{green("--flag2 FLAG")}    this flag does something else
+        #{highlight("--flag1 FLAG")}    this flag does something
+        #{highlight("--flag2 FLAG")}    this flag does something else
       """
     end
 
@@ -35,7 +34,7 @@ defmodule Tux.HelpTest do
       help =
         Help.new()
         |> Help.about("cmd", "description")
-        |> Help.usage(["cmd [OPTS] [ARGS]"])
+        |> Help.usage("cmd [OPTS] [ARGS]")
         |> Help.commands([
           {"start", "Start something"},
           {"stop", "Stop something"}
@@ -48,8 +47,6 @@ defmodule Tux.HelpTest do
       assert to_string(help) == colored()
     end
   end
-
-  ###
 
   describe "(un)colored help" do
     def uncolored do
@@ -80,14 +77,12 @@ defmodule Tux.HelpTest do
     end
   end
 
-  ###
-
   describe "help message generation" do
     def generated() do
       """
       #{bold("COMMANDS")}
-        #{green("sub")}       Sub command
-        #{green("add, a")}
+        #{highlight("sub")}       Sub command
+        #{highlight("add, a")}
       """
     end
 
@@ -155,6 +150,15 @@ defmodule Tux.HelpTest do
         ])
 
       assert to_string(help) == aligned()
+    end
+  end
+
+  describe "failure modes" do
+    test "bad arg for Help.usage" do
+      assert_raise(ArgumentError, fn ->
+        Help.new()
+        |> Help.usage(:bla)
+      end)
     end
   end
 end

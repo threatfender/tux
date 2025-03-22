@@ -4,6 +4,8 @@
 
 This version is not yet published to `hex.pm`.
 
+  * Accept strings for `Tux.Help.usage/2`
+  * Update the style for highlighted `Tux.Help` elements.
   * Define the `Tux.Error.t()` type
   * Add new `tux_new` installer
   * Add test for raising `Tux.Error` exceptions

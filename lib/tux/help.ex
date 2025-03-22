@@ -159,18 +159,18 @@ defmodule Tux.Help do
   ## Examples
 
       iex> Tux.Help.new()
-      %Tux.Help{color: true, hue: &Tux.Colors.green/2, sections: [], upcase: true}
+      %Tux.Help{color: true, hue: &Tux.Help.highlight/2, sections: [], upcase: true}
 
       iex> Tux.Help.new(color: false)
-      %Tux.Help{color: false, hue: &Tux.Colors.green/2, sections: [], upcase: true}
+      %Tux.Help{color: false, hue: &Tux.Help.highlight/2, sections: [], upcase: true}
 
   ## Options
 
-  When constructing a new help struct you can customize it behaviour
+  When constructing a new help struct you can customize its behaviour
   with the following options:
 
     * `:hue` (fun/2)
-      – function for coloring (*default is `Tux.Colors.green/2`*)
+      – function for coloring/styling (*default is `Tux.Help.highlight/2`*)
     * `:color` (boolean)
       – flag to colorize help sections (*default is true*)
     * `:upcase` (boolean)
@@ -181,11 +181,27 @@ defmodule Tux.Help do
   def new(opts \\ []) do
     struct!(__MODULE__,
       color: Keyword.get(opts, :color, true),
-      hue: Keyword.get(opts, :hue, &Tux.Colors.green/2),
+      hue: Keyword.get(opts, :hue, &__MODULE__.highlight/2),
       upcase: Keyword.get(opts, :upcase, true),
       sections: []
     )
   end
+
+  @doc """
+  Default highlight style for certain elements such as
+  command names or option/flag names.
+
+  The current implementation will embolden text and
+  color it green.
+  """
+  def highlight(text, enabled \\ true),
+    do: _highlight(text, enabled)
+
+  defp _highlight(text, false),
+    do: text
+
+  defp _highlight(text, true),
+    do: text |> Tux.Colors.bold() |> Tux.Colors.green()
 
   @doc """
   Build the specification for section creation
@@ -259,7 +275,7 @@ defmodule Tux.Help do
   #### – Populate usage section via plain text
 
       iex> Tux.Help.new(color: false)
-      ...> |> Tux.Help.usage(["cmd [OPTS] [ARGS]"])
+      ...> |> Tux.Help.usage("cmd [OPTS] [ARGS]")
       ...> |> String.Chars.to_string()
       "USAGE\\n" <>
       "  cmd [OPTS] [ARGS]\\n"
@@ -290,19 +306,34 @@ defmodule Tux.Help do
 
   ## Options for `usage/3`:
 
-    * `:title` (string) - overwrite the default usage title with a default one
-    * `:hued` (boolean) - a flag to colorize section body (default is true)
+    * `:title` (string) - overwrite the default usage title with a custom one
+    * `:hued` (boolean) - a flag to colorize commands (default is true)
 
   """
-  @spec usage(t, [cmd_name | {cmd_name, cmd_desc}], sec_opts) :: t()
-  def usage(help, cmds_or_cmd_desc_pairs, opts \\ []) when is_list(cmds_or_cmd_desc_pairs) do
+  @spec usage(t, cmd_name | [cmd_name | {cmd_name, cmd_desc}], sec_opts) :: t()
+  def usage(help, cmd_or_cmds, opts \\ []) do
     specs = build_specs("usage", opts)
 
-    # A flag whether to apply hue to usage body
+    # A flag whether to apply styling for usage & other sections
     hued? = help.color && Keyword.get(opts, :hued, true)
 
+    cmd_or_cmds =
+      case cmd_or_cmds do
+        value when is_binary(value) ->
+          [value]
+
+        value when is_list(value) ->
+          value
+
+        value ->
+          raise ArgumentError,
+            message: """
+            #{blue(inspect(value))} #{red("<- bad type")}. Supported types: string, list.
+            """
+      end
+
     ("#{head(help, specs.title)}\n" <>
-       (cmds_or_cmd_desc_pairs
+       (cmd_or_cmds
         |> Enum.map(fn
           {cmd, desc} -> {help.hue.(cmd, hued?), desc}
           cmd -> {help.hue.(cmd, hued?), ""}
