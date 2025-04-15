@@ -104,7 +104,7 @@ defmodule Tux.Command do
       end
 
   """
-  @callback help() :: {:ok, Tux.Help.t()}
+  @callback help() :: {:ok, Tux.Help.t() | String.t()}
 
   @doc """
   Implement the command logic.

@@ -271,7 +271,7 @@ defmodule Tux.Dispatcher do
   This callback is injected automatically when `use Tux.Dispatcher`
   is invoked, however it can also be overwritten.
   """
-  @callback help() :: {:ok, Tux.Help.t()}
+  @callback help() :: {:ok, Tux.Help.t() | String.t()}
 
   @doc """
   Register a command module for a given command name in the current dispatcher.

@@ -143,7 +143,7 @@ defmodule Tux.Help do
   @doc """
   Return a help struct for showing help messages
   """
-  @callback help() :: {:ok, __MODULE__.t()}
+  @callback help() :: {:ok, __MODULE__.t() | String.t()}
 
   @optional_callbacks about: 0, help: 0
 
@@ -573,7 +573,7 @@ defmodule Tux.Help do
       for the current dispatcher.
       """
       @impl true
-      @spec help() :: {:ok, Tux.Help.t()}
+      @spec help() :: {:ok, Tux.Help.t() | String.t()}
       def help(), do: {:ok, gen_help(__MODULE__)}
 
       if Keyword.get(unquote(opts), :overridable) do
