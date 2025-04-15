@@ -90,9 +90,10 @@ defmodule Tux.HelpTest do
       defmodule Program do
         use Tux.Dispatcher
         cmd "sub", Program.Sub
-        cmd "add", Program.Add
+
         # A shortcut for the "add" command
         cmd "a", Program.Add
+        cmd "add", Program.Add
 
         defmodule Add do
           def main(_), do: :ok

@@ -4,6 +4,7 @@
 
 This version is not yet published to `hex.pm`.
 
+  * Sort the names of the same cmd by length (:desc) in help messages.
   * Accept strings for `Tux.Help.usage/2`
   * Update the style for highlighted `Tux.Help` elements.
   * Define the `Tux.Error.t()` type

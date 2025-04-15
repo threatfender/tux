@@ -534,9 +534,15 @@ defmodule Tux.Help do
               cmds
               |> (fn
                     # Single command
-                    [c] -> {module, c}
-                    # Multiple commands for same module
-                    cs -> {module, Enum.join(cs, ", ")}
+                    [c] ->
+                      {module, c}
+
+                    # Sort command names by length (shortcuts at the end)
+                    cs when is_list(cs) ->
+                      {module,
+                       cs
+                       |> Enum.sort_by(&String.length(&1), :desc)
+                       |> Enum.join(", ")}
                   end).()
             end)
             |> Enum.map(fn {module, cmds} ->
