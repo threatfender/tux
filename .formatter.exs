@@ -13,6 +13,7 @@
 
     # Testing
     scenario: 2,
+    execute: 2,
     enter: 2
   ],
   export: [
@@ -23,7 +24,8 @@
       program: 2,
       dispatcher: 2,
       command: 2,
-      scenario: 2
+      scenario: 2,
+      execute: 2
     ]
   ],
   inputs: ["{mix,.formatter}.exs", "{config,lib,test}/**/*.{ex,exs}"]

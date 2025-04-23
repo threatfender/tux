@@ -4,6 +4,7 @@
 
 This version is not yet published to `hex.pm`.
 
+  * Include `execute/2` macro in formatter rules.
   * Sort the names of the same cmd by length (:desc) in help messages.
   * Accept strings for `Tux.Help.usage/2`
   * Update the style for highlighted `Tux.Help` elements.
