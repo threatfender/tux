@@ -83,6 +83,14 @@ defmodule DemoTest do
     using: Demo,
     invoke: "hello",
     expect: [approx: "Hello"]
+
+  test "check another command" do
+    bar = :erlang.monotonic_time() |> abs() |> to_string()
+
+    execute Demo,
+      invoke: "foo #{bar}",
+      expect: [approx: "some response"]
+  end
 end
 ```
 
