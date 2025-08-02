@@ -316,10 +316,10 @@ defmodule Tux do
   ABOUT
     scan - scan strings
 
-  USAGE
+  Usage
     strings scan [OPTS] [ARGS]
 
-  OPTIONS
+  Options
     --uppercase, u    Uppercase endpoint name
     --lowercase, u    Lowercase endpoint name
 

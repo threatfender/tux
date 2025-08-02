@@ -92,10 +92,10 @@ defmodule Tux.Command do
         @impl true
         def help() do
           \"\"\"
-          \#{bold("USAGE")}
+          \#{bold("Usage")}
             command [ARGS] [FLAGS]
 
-          \#{bold("OPTIONS")}
+          \#{bold("Options")}
             --flag1        This flag does something
             --flag2, -f2   This flag does something else
           \"\"\"

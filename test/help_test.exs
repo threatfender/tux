@@ -14,17 +14,17 @@ defmodule Tux.HelpTest do
   describe "colored help" do
     def colored do
       """
-      #{bold("ABOUT")}
+      #{bold("About")}
         cmd - description
 
-      #{bold("USAGE")}
+      #{bold("Usage")}
         #{highlight("cmd [OPTS] [ARGS]")}
 
-      #{bold("COMMANDS")}
+      #{bold("Commands")}
         #{highlight("start")}    Start something
         #{highlight("stop")}     Stop something
 
-      #{bold("OPTIONS")}
+      #{bold("Options")}
         #{highlight("--flag1 FLAG")}    this flag does something
         #{highlight("--flag2 FLAG")}    this flag does something else
       """
@@ -51,13 +51,13 @@ defmodule Tux.HelpTest do
   describe "(un)colored help" do
     def uncolored do
       """
-      ABOUT
+      About
         cmd - description
 
-      USAGE
+      Usage
         cmd [OPTS] [ARGS]
 
-      OPTIONS
+      Options
         --flag1 FLAG    this flag does something
         --flag2 FLAG    this flag does something else
       """
@@ -80,7 +80,7 @@ defmodule Tux.HelpTest do
   describe "help message generation" do
     def generated() do
       """
-      #{bold("COMMANDS")}
+      #{bold("Commands")}
         #{highlight("sub")}       Sub command
         #{highlight("add, a")}
       """
@@ -136,7 +136,7 @@ defmodule Tux.HelpTest do
   describe "alignments for" do
     def aligned() do
       """
-      OPTIONS
+      Options
         --flag1 FLAG    This flag does something
         --flag2 FLAG    This flag does something else
       """

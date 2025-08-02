@@ -68,7 +68,7 @@ defmodule TuxTest do
 
     test "invocation with no command shows help" do
       help_msg = """
-      COMMANDS
+      Commands
         echo    echo back the args
         add     command with one preload
         cat     command with two preloads

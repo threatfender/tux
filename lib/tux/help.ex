@@ -14,13 +14,13 @@ defmodule Tux.Help do
   which you can create with tux:
 
   ```sh
-  ABOUT
+  About
     mng - command for controlling systems
 
-  USAGE
+  Usage
     tool mng [OPTS] [ARGS]
 
-  OPTIONS
+  Options
     --upcase, u        Uppercase endpoint name
     --lowercase, l     Lowercase endpoint name
 
@@ -67,14 +67,14 @@ defmodule Tux.Help do
         @impl true
         def help() do
           \"\"\"
-          \#{bold("ABOUT")}
+          \#{bold("About")}
             mng - command for controlling systems
-          \#{bold("\\nUSAGE")}
+          \#{bold("\\nUsage")}
             \#{green("tool mng [OPTS] [ARGS]")}
-          \#{bold("\\nOPTIONS")}
+          \#{bold("\\nOptions")}
             \#{green("--upcase, u")}        Uppercase endpoint name
             \#{green("--lowercase, l")}     Lowercase endpoint name
-          \#{bold("\\nNOTES")}
+          \#{bold("\\nNotes")}
             Here are some additional notes to include
             in the help message.
           end
@@ -159,9 +159,9 @@ defmodule Tux.Help do
   ## Examples
 
       iex> Tux.Help.new()
-      %Tux.Help{color: true, hue: &Tux.Help.highlight/2, sections: [], upcase: true}
+      %Tux.Help{color: true, hue: &Tux.Help.highlight/2, sections: [], upcase: false}
 
-      iex> Tux.Help.new(color: false)
+      iex> Tux.Help.new(color: false, upcase: true)
       %Tux.Help{color: false, hue: &Tux.Help.highlight/2, sections: [], upcase: true}
 
   ## Options
@@ -182,7 +182,7 @@ defmodule Tux.Help do
     struct!(__MODULE__,
       color: Keyword.get(opts, :color, true),
       hue: Keyword.get(opts, :hue, &__MODULE__.highlight/2),
-      upcase: Keyword.get(opts, :upcase, true),
+      upcase: Keyword.get(opts, :upcase, false),
       sections: []
     )
   end
@@ -217,7 +217,11 @@ defmodule Tux.Help do
   """
   @spec head(t(), String.t()) :: String.t()
   def head(help, title) do
-    title = if help.upcase, do: String.upcase(title), else: title
+    title =
+      title
+      |> String.capitalize()
+      |> then(&if help.upcase, do: String.upcase(&1), else: &1)
+
     "#{bold(title, help.color)}"
   end
 
@@ -227,7 +231,7 @@ defmodule Tux.Help do
       iex> Tux.Help.new(color: false)
       ...> |> Tux.Help.about("this is the one line cmd description")
       ...> |> String.Chars.to_string()
-      "ABOUT\\n" <>
+      "About\\n" <>
       "  this is the one line cmd description\\n"
   """
   @spec about(t, bin_desc) :: t()
@@ -251,7 +255,7 @@ defmodule Tux.Help do
       iex> Tux.Help.new(color: false)
       ...> |> Tux.Help.about("cmd", "this is the one line cmd description")
       ...> |> String.Chars.to_string()
-      "ABOUT\\n" <>
+      "About\\n" <>
       "  cmd - this is the one line cmd description\\n"
 
   """
@@ -277,7 +281,7 @@ defmodule Tux.Help do
       iex> Tux.Help.new(color: false)
       ...> |> Tux.Help.usage("cmd [OPTS] [ARGS]")
       ...> |> String.Chars.to_string()
-      "USAGE\\n" <>
+      "Usage\\n" <>
       "  cmd [OPTS] [ARGS]\\n"
 
 
@@ -286,7 +290,7 @@ defmodule Tux.Help do
       iex> Tux.Help.new(color: false)
       ...> |> Tux.Help.usage(["cmd1", "cmd2", "cmd3"])
       ...> |> String.Chars.to_string()
-      "USAGE\\n"<>
+      "Usage\\n"<>
       "  cmd1\\n" <>
       "  cmd2\\n" <>
       "  cmd3\\n"
@@ -299,7 +303,7 @@ defmodule Tux.Help do
       ...> {"cmd2", "cmd 2 description"},
       ...> ])
       ...> |> String.Chars.to_string()
-      "USAGE\\n" <>
+      "Usage\\n" <>
       "  cmd1    cmd 1 description\\n" <>
       "  cmd2    cmd 2 description\\n"
 
@@ -357,7 +361,7 @@ defmodule Tux.Help do
       ...> {"--flag3", "flag3 description"},
       ...> ])
       ...> |> to_string()
-      "OPTIONS\\n" <>
+      "Options\\n" <>
       "  --flag1    flag1 description\\n" <>
       "  --flag2    flag2 description\\n" <>
       "  --flag3    flag3 description\\n"
@@ -393,7 +397,7 @@ defmodule Tux.Help do
       ...> {"stop", "Stop something"},
       ...> ])
       ...> |> to_string()
-      "COMMANDS\\n" <>
+      "Commands\\n" <>
       "  start    Start something\\n" <>
       "  stop     Stop something\\n"
 
@@ -413,7 +417,7 @@ defmodule Tux.Help do
       ...> Help.new(color: false)
       ...> |> Help.section("notes", "some custom section" <> "\\nand more")
       ...> |> to_string()
-      "NOTES\\n" <>
+      "Notes\\n" <>
       "  some custom section\\n" <>
       "  and more"
 
@@ -439,7 +443,7 @@ defmodule Tux.Help do
       ...> |> Tux.Help.about("this is my command")
       ...> |> String.Chars.to_string()
       ...> |> Tux.Help.ok()
-      {:ok, "ABOUT\\n" <>
+      {:ok, "About\\n" <>
       "  this is my command\\n"}
 
   """
