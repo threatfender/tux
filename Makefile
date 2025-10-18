@@ -4,15 +4,24 @@ default:
 	@echo "  scan      Scan package for issues"
 	@echo "  docs      Generate and then open docs"
 	@echo "  publish   Publish package and docs to hex.pm"
+	@echo "  clean     Clean all project artifacts"
 	@echo ""
 
-scan:
+deps:
+	@mix deps.get
+
+scan: deps
 	@mix src.analyze
 	@mix pkg.analyze
 
-docs:
+docs: deps
 	@mix docs
 	@show doc/index.html
 
-publish:
+publish: deps
 	@mix hex.publish
+
+clean:
+	rm -rf .elixir_ls
+	rm -rf _build
+	rm -rf deps
