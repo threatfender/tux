@@ -26,6 +26,9 @@ jobs:
         - otp: 28.1
           elixir: 1.18.4
 
+        - otp: 28.1
+          elixir: 1.19.2
+
     steps:
     - name: Checkout
       uses: actions/checkout@v4

@@ -27,7 +27,15 @@ clean:
 	rm -rf _build
 	rm -rf deps
 
+ELIXIR_VERS := 1.19.2 1.18.4 1.17.3 1.16.3 1.15.8
+ALPINE_TAG := alpine
+
 .PHONY: test
 test:
-	podman build -t tux-test .
-	podman run --rm tux-test
+	@for ver in $(ELIXIR_VERS); do \
+		tag="tux-test-$$ver"; \
+		echo ""; \
+		echo "=== Testing with Elixir $$ver ==="; \
+		podman build --quiet --build-arg ELIXIR_VERSION=$$ver-$(ALPINE_TAG) -t $$tag .; \
+		podman run --rm $$tag; \
+	done

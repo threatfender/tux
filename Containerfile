@@ -1,4 +1,5 @@
-FROM elixir:1.18.4-alpine
+ARG ELIXIR_VERSION=1.19.2-alpine
+FROM elixir:${ELIXIR_VERSION}
 
 # Set workdir
 WORKDIR /app
