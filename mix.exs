@@ -34,7 +34,7 @@ defmodule Tux.MixProject do
     [
       licenses: ["Apache-2.0"],
       links: %{
-        "Homepage" => "https://tuxpkg.dev/",
+        "Homepage" => "https://threatfender.com/tux/",
         "GitHub" => "https://github.com/threatfender/tux"
       },
       files: ~w(lib mix.exs .formatter.exs CHANGELOG.md README.md LICENSE)

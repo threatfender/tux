@@ -1,6 +1,6 @@
 # mix tux.new
 
-Mix task to generate [tux](https://tuxpkg.dev/) based command line Elixir projects.
+Mix task to generate [tux](https://threatfender.com/tux/) based command line Elixir projects.
 
 ## Installation
 

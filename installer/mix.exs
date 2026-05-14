@@ -15,7 +15,7 @@ defmodule TuxNew.MixProject do
         source_url: "https://github.com/threatfender/tux",
         source_ref: "master",
         links: %{
-          "Homepage" => "https://tuxpkg.dev/",
+          "Homepage" => "https://threatfender.com/tux/",
           "GitHub" => "https://github.com/threatfender/tux"
         }
       ],
