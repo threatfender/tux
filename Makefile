@@ -27,7 +27,7 @@ clean:
 	rm -rf _build
 	rm -rf deps
 
-ELIXIR_VERS := 1.19.2 1.18.4 1.17.3 1.16.3 1.15.8
+ELIXIR_VERS := 1.20.1 1.19.2 1.18.4 1.17.3 1.16.3 1.15.8
 ALPINE_TAG := alpine
 
 .PHONY: test
