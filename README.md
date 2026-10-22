@@ -16,6 +16,10 @@ Its modular structure ensures its core functionalities can be overwritten
 and composed to fulfill custom needs, and having no dependencies means it can
 achieve a higher level of security by minimizing trusted parties.
 
+## Testing Status
+
+* Tested with Elixir: `1.16`, `1.17`, `1.18`, `1.19`, `1.20`
+* Tested with Erlang/OTP: `26`, `27`, `28`, `29`
 
 ## Quickstart
 
