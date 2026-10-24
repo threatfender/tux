@@ -10,6 +10,7 @@ defmodule Tux.MixProject do
       elixir: "~> 1.15",
       start_permanent: Mix.env() == :prod,
       consolidate_protocols: Mix.env() == :prod,
+      test_ignore_filters: [~r"test/apps/"],
       deps: deps(),
       aliases: aliases(),
 
