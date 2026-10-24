@@ -1,12 +1,21 @@
 # Tux
 
-[Official Site](https://threatfender.com/tux/)
-– [Docs](https://hexdocs.pm/tux)
-– [Examples](https://github.com/threatfender/tux/tree/master/examples)
+<div align="center">
+  <img src="assets/logo.png"/>
+  <br />
+  <p align="center">Terminal User Experience</p>
 
-<img src="assets/logo.png"/>
+  <a href="https://hex.pm/packages/tux">
+    <img alt="Hex Version" src="https://img.shields.io/badge/hex.pm-v0.4.0-orange" />
+  </a>
 
-*Terminal User Experience*
+  <img src="https://img.shields.io/badge/coverage-100%25-green" />
+
+  <a href="https://tux.hexdocs.pm/">
+    <img alt="Hex Version" src="https://img.shields.io/badge/hex.pm-docs-blue" />
+  </a>
+  <br /><br />
+</div>
 
 Tux is a **modular**, **dependency-free** Elixir library
 designed for the speedy creation of elegant command line interfaces
@@ -15,6 +24,8 @@ which subscribe to the philosophy *"One module per command"*.
 Its modular structure ensures its core functionalities can be overwritten
 and composed to fulfill custom needs, and having no dependencies means it can
 achieve a higher level of security by minimizing trusted parties.
+
+See the [examples](https://github.com/threatfender/tux/tree/master/examples) directory for practical usage and boilerplate code.
 
 ## Testing Status
 
